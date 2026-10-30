@@ -1,0 +1,68 @@
+{
+ "supuestos": {
+  "costo_evitado": 970.03,
+  "valor_credito": 428.94,
+  "bolsa": [
+   532.49,
+   437.91,
+   236.37,
+   144.21,
+   129.76,
+   112.86,
+   138.36,
+   251.45,
+   304.8,
+   176.9,
+   234.87,
+   282.97
+  ],
+  "capex_usd": 321830,
+  "trm": 3158.43,
+  "om_pct": 1.0,
+  "reemplazo_usd": 75612,
+  "anio_reemplazo": 13,
+  "degradacion": 0.5,
+  "escalamiento": 0.0,
+  "tasa": 10.0,
+  "vida": 25
+ },
+ "balance_anual": {
+  "gen_MWh": 451.43,
+  "consumo_MWh": 77.38,
+  "autoconsumo_MWh": 32.56,
+  "importacion_MWh": 44.81,
+  "excedente_MWh": 418.87,
+  "credito_MWh": 44.81,
+  "venta_bolsa_MWh": 374.05,
+  "ahorro_autoconsumo_MCOP": 31.59,
+  "valor_creditos_MCOP": 19.22,
+  "ingreso_bolsa_MCOP": 93.68,
+  "autoconsumo_pct_generacion": 7.2,
+  "autosuficiencia_pct_consumo": 42.1
+ },
+ "indicadores": {
+  "inversion_MCOP": 1016.4775268999999,
+  "om_MCOP_anio": 10.164775269,
+  "beneficio_anio1_MCOP": 144.48729412888127,
+  "VPN_MCOP": 86.10260565862433,
+  "TIR_pct": 11.161405127251777,
+  "retorno_simple_anios": 7.705619123637733,
+  "retorno_descontado_anios": 18.958368670464147,
+  "LCOE_COP_kWh": 298.2620543596922,
+  "LCOE_USD_kWh": 0.0944336440445703
+ },
+ "consumo_bruto_MWh": {
+  "2019": 89.37,
+  "2020": 76.38,
+  "2021": 79.48,
+  "2022": 85.69,
+  "2023": 95.17,
+  "2024": 83.54
+ },
+ "variabilidad_recurso": {
+  "VPN_min": 41.064074189571755,
+  "VPN_max": 90.79029261487914,
+  "TIR_min": 10.557558926499288,
+  "TIR_max": 11.223823322592718
+ }
+}

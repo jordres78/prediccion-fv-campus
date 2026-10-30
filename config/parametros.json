@@ -1,0 +1,75 @@
+{
+  "descripcion": "Parámetros del caso de estudio. Todos los scripts leen este archivo; para aplicar el flujo a otro sitio basta con modificarlo.",
+
+  "sitio": {
+    "latitud": 1.1981,
+    "longitud": -77.2781,
+    "altitud_m": 2553.0,
+    "zona_horaria": "Etc/GMT+5"
+  },
+
+  "archivos": {
+    "consumo_xlsx": "datos/consumo_medidor.xlsx",
+    "nasa_irradiancia_csv": "datos/nasa_power_irradiancia.csv",
+    "nasa_meteorologia_csv": "datos/nasa_power_meteorologia.csv",
+    "estacion_xlsx": "datos/estacion_meteorologica.xlsx",
+    "inversor_csv": "datos/inversor_sistema_existente.csv"
+  },
+
+  "particion": {
+    "fin_entrenamiento": "2022-12-31",
+    "fin_validacion": "2023-12-31"
+  },
+
+  "consumo": {
+    "hoja_diaria": "Dias",
+    "columna_fecha": "FECHA",
+    "columna_energia": "ACTIVA",
+    "anios_horarios": [2019, 2020, 2021, 2022, 2023, 2024],
+    "inicio_generacion_detras_del_medidor": "2024-05-05",
+    "semilla": 42
+  },
+
+  "irradiancia": {
+    "horizontes_h": [1, 24],
+    "cenit_max_diurno_grados": 85,
+    "submuestra_svr": 12000,
+    "semilla": 42
+  },
+
+  "fv": {
+    "inclinacion_grados": 10,
+    "azimut_grados": 180,
+    "albedo": 0.2,
+    "coef_temperatura_potencia_por_C": -0.0029,
+    "eficiencia_inversor": 0.973,
+    "perdidas_pct": {
+      "suciedad": 2.0,
+      "desajuste": 2.0,
+      "cableado": 2.0,
+      "disponibilidad": 1.0,
+      "degradacion_inicial": 1.5
+    },
+    "sistema_existente": {"potencia_dc_kw": 15.0, "potencia_ac_kw": 15.0},
+    "ampliacion": {"potencia_dc_kw": 371.2, "potencia_ac_kw": 330.0},
+    "anios_meteorologicos": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+  },
+
+  "economia": {
+    "anio_base": 2023,
+    "costo_unitario_cop_kwh": 808.36,
+    "contribucion": 0.20,
+    "componente_generacion_cop_kwh": 428.94,
+    "precio_bolsa_mensual_cop_kwh": [532.49, 437.91, 236.37, 144.21, 129.76, 112.86, 138.36, 251.45, 304.80, 176.90, 234.87, 282.97],
+    "capex_usd_kw": 867,
+    "trm_cop_usd": 3158.43,
+    "om_pct_capex": 1.0,
+    "reemplazo_inversores_usd": 75612,
+    "anio_reemplazo_inversores": 13,
+    "degradacion_pct_anual": 0.5,
+    "escalamiento_real_pct_anual": 0.0,
+    "tasa_descuento_pct": 10.0,
+    "vida_util_anios": 25,
+    "potencias_dimensionamiento_kw": [15, 50, 100, 150, 200, 300, 371.2]
+  }
+}

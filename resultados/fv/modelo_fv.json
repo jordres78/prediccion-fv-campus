@@ -1,0 +1,72 @@
+{
+ "supuestos": {
+  "inclinacion": 10,
+  "azimut": 180,
+  "perdidas_pct": {
+   "suciedad": 2.0,
+   "desajuste": 2.0,
+   "cableado": 2.0,
+   "disponibilidad": 1.0,
+   "degradacion_inicial": 1.5
+  },
+  "perdidas_totales_pct": 8.22,
+  "transposicion": "Hay-Davies",
+  "temperatura_celda": "Faiman",
+  "descomposicion": "Erbs",
+  "fin_datos_irradiancia": "2025-05-31 02:00:00-05:00"
+ },
+ "produccion_medida": {
+  "inicio": "2025-02-05 18:26:00-05:00",
+  "fin": "2025-10-17 09:34:00-05:00",
+  "dias_validos": 243,
+  "energia_media_kWh_dia": 48.72,
+  "rendimiento_kWh_kWp_dia": 3.248
+ },
+ "validacion_diaria": {
+  "n": 108,
+  "media_real": 47.54611884773662,
+  "media_modelo": 52.24612612988836,
+  "MBE": 4.700007282151745,
+  "nMBE_pct": 9.885154448049093,
+  "MAE": 8.97706200326243,
+  "RMSE": 10.80072574182166,
+  "nRMSE_pct": 22.716314188357384,
+  "r": 0.5058872919955255
+ },
+ "rendimiento_global_medido": 0.8,
+ "rendimiento_global_modelo": 0.879,
+ "factor_calibracion": 0.91,
+ "validacion_diaria_estacion": {
+  "n": 31,
+  "media_real": 45.833991164874554,
+  "media_modelo": 39.308187586100445,
+  "MBE": -6.525803578774119,
+  "nMBE_pct": -14.237912546824525,
+  "MAE": 6.525803578774119,
+  "RMSE": 7.459433646016539,
+  "nRMSE_pct": 16.2748943664613,
+  "r": 0.9593673363286097
+ },
+ "validacion_diaria_satelite_mismos_dias": {
+  "n": 31,
+  "media_real": 45.833991164874554,
+  "media_modelo": 51.393231692593744,
+  "MBE": 5.559240527719203,
+  "nMBE_pct": 12.129077975604263,
+  "MAE": 9.098262063572395,
+  "RMSE": 10.91631280216216,
+  "nRMSE_pct": 23.817067911223084,
+  "r": 0.5331851759079295
+ },
+ "ampliacion": {
+  "potencia_kWp": 371.2,
+  "energia_media_MWh": 442.0,
+  "energia_min_MWh": 428.3,
+  "energia_max_MWh": 451.4,
+  "desviacion_MWh": 7.3,
+  "CV_pct": 1.66,
+  "P90_MWh": 432.6,
+  "rendimiento_kWh_kWp": 1191.0,
+  "factor_capacidad_pct": 13.59
+ }
+}
