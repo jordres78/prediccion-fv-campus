@@ -29,7 +29,7 @@ resultados/                     Tablas (CSV y JSON) y figuras (PNG, 300 ppp) gen
 
 | Archivo | Contenido | Periodo | Resolución |
 |---|---|---|---|
-| `consumo_medidor.xlsx` | Energía activa del medidor de la sede (hojas anuales con columnas HORA 1–24 y hoja `Dias` con totales diarios) | 2019-01-01 a 2025-04-30 | Horaria hasta 2024; diaria hasta 2025-04-30 |
+| `consumo_medidor.xlsx` | Energía activa del medidor de la sede (hojas anuales con columnas HORA 1–24 y hoja `Dias` con totales diarios) | 2019-01-01 a 2025-04-30 | Horaria hasta 2024 y diaria hasta 2025-04-30 |
 | `nasa_power_irradiancia.csv` | GHI, DNI y DHI de NASA POWER (CERES SYN1deg), punto 1,1981° N, 77,2781° O, hora solar local | 2015-01-01 a 2025-09-09 (sin datos de irradiancia desde 2025-05-31) | Horaria |
 | `nasa_power_meteorologia.csv` | Temperatura, humedad y viento de NASA POWER (MERRA-2) | 2015-01-01 a 2025-09-09 | Horaria |
 | `estacion_meteorologica.xlsx` | Irradiancia y variables meteorológicas de la estación local | 2025-02-03 a 2025-05-27 | ~2 min |
@@ -37,21 +37,21 @@ resultados/                     Tablas (CSV y JSON) y figuras (PNG, 300 ppp) gen
 
 Consideraciones sobre los datos:
 
-* En la hoja `Dias`, el año 2023 aparece duplicado; el código elimina las fechas repetidas.
+* En la hoja `Dias`, el año 2023 aparece duplicado, por lo que el código elimina las fechas repetidas.
 * Desde el 5 de mayo de 2024, el sistema fotovoltaico existente opera detrás del medidor, por lo que este registra la importación neta. El paso 4 reconstruye el consumo bruto sumando la energía diaria del sistema existente: la medida por el inversor cuando existe y la modelada y calibrada en el resto del periodo.
-* Las componentes DNI y DHI de NASA POWER no cierran con la GHI; el modelo fotovoltaico obtiene ambas componentes de la GHI con el modelo de Erbs.
+* Las componentes DNI y DHI de NASA POWER no cierran con la GHI, por lo que el modelo fotovoltaico obtiene ambas componentes de la GHI con el modelo de Erbs.
 
 ## Protocolo de evaluación de los pronósticos
 
 * **Partición temporal sin mezcla:**
-  * entrenamiento hasta 2022-12-31;
-  * validación durante 2023;
-  * prueba desde 2024-01-01.
-* **Selección de modelos:** los hiperparámetros se eligen solo con el error en validación; el modelo elegido se reentrena con entrenamiento y validación y se evalúa una sola vez en prueba.
+  * entrenamiento hasta 2022-12-31
+  * validación durante 2023
+  * prueba desde 2024-01-01
+* **Selección de modelos:** los hiperparámetros se eligen solo con el error en validación. El modelo elegido se reentrena con entrenamiento y validación y se evalúa una sola vez en prueba.
 * **Origen móvil:** cada pronóstico usa únicamente información disponible en el instante de emisión.
 * **Referencias:**
-  * consumo: persistencia (t − 1) y persistencia semanal (t − 7);
-  * irradiancia: persistencia, persistencia de 24 h, climatología mes-hora y persistencia inteligente.
+  * consumo: persistencia (t − 1) y persistencia semanal (t − 7)
+  * irradiancia: persistencia, persistencia de 24 h, climatología mes-hora y persistencia inteligente
 * **Métricas:** MAE, RMSE, nRMSE (RMSE/media observada), MBE, R² e índice de habilidad s = 1 − RMSE/RMSE_ref. Las de irradiancia se calculan solo en horas diurnas (ángulo cenital < 85°).
 * **Intervalos de confianza del 95 % del RMSE:** remuestreo por bloques de 7 días para el consumo y por días completos para la irradiancia.
 * **Redes LSTM:** se entrenan con tres semillas y se reporta el promedio de sus predicciones.
@@ -78,12 +78,22 @@ Los valores están en `config/parametros.json`:
 * **Inversión:** costo de referencia de 867 USD/kW y TRM de 3.158,43 COP/USD.
 * **Operación y mantenimiento:** 1 % anual de la inversión.
 * **Vida útil y operación:** reemplazo de inversores en el año 13, degradación de 0,5 % anual, vida útil de 25 años y tasa de descuento real del 10 %.
+* **Sensibilidad:** precio de bolsa, inversión, TRM, tasa de descuento, costo evitado, valor de los créditos de energía, operación y mantenimiento, degradación anual y escalamiento real de precios.
 
 ## Licencias
 
 * Código: MIT (archivo `LICENSE`).
 * Datos y resultados: Creative Commons Atribución 4.0 Internacional (CC BY 4.0).
 
+## Versiones
+
+* **1.2:** se añade la degradación anual de los módulos al análisis de sensibilidad y se unifica el formato de las fechas en las figuras.
+* **1.1:** primera versión completa del flujo, con datos, código y resultados.
+
 ## Cómo citar
 
-Si usa este material, cite el artículo asociado y este repositorio (el DOI se agregará al publicar la versión en Zenodo).
+Si usa este material, cite el artículo asociado y este repositorio. El DOI siguiente identifica todas las versiones y remite siempre a la más reciente:
+
+> Repositorio *prediccion-fv-campus*. Zenodo. https://doi.org/10.5281/zenodo.23810715
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23810715.svg)](https://doi.org/10.5281/zenodo.23810715)

@@ -32,6 +32,8 @@ import holidays
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from matplotlib.ticker import FuncFormatter
 from sklearn.linear_model import Ridge
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.pipeline import Pipeline
@@ -41,7 +43,7 @@ from sklearn.model_selection import ParameterGrid
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
-from comun import cargar_config, ruta, carpeta_resultados, metricas, ic_rmse_bloques, guardar_json
+from comun import cargar_config, ruta, carpeta_resultados, metricas, ic_rmse_bloques, guardar_json, MESES_ES
 
 cfg = cargar_config()
 c = cfg['consumo']
@@ -278,6 +280,7 @@ ax[1].set_title('(b) Detalle de cuatro semanas', fontsize=10)
 ax[1].set_ylabel('kWh/día')
 ax[1].legend(fontsize=8)
 ax[1].grid(alpha=0.3)
+ax[1].xaxis.set_major_formatter(FuncFormatter(lambda v, _: f'{mdates.num2date(v).day} {MESES_ES[mdates.num2date(v).month - 1]}.'))
 ax[1].tick_params(axis='x', rotation=30)
 plt.tight_layout()
 plt.savefig(f'{salida}/fig_prediccion_consumo.png', dpi=300)

@@ -33,7 +33,7 @@ from sklearn.ensemble import RandomForestRegressor, HistGradientBoostingRegresso
 from sklearn.model_selection import ParameterGrid
 
 from comun import (cargar_config, ruta, carpeta_resultados, leer_nasa_power, metricas, ic_rmse_dias,
-                   guardar_json, coma)
+                   guardar_json, coma, MESES_ES)
 
 cfg = cargar_config()
 s, ci = cfg['sitio'], cfg['irradiancia']
@@ -255,7 +255,7 @@ ax.set_ylabel('GHI (W/m²)')
 ax.set_ylim(0, 800)
 ax.grid(alpha=0.3)
 ax.legend(fontsize=9, ncol=4, loc='upper center', bbox_to_anchor=(0.5, -0.12), frameon=False)
-ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: mdates.num2date(v).strftime('%d/%m')))
+ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f'{mdates.num2date(v).day} {MESES_ES[mdates.num2date(v).month - 1]}.'))
 plt.tight_layout()
 plt.savefig(f'{salida}/fig_prediccion_irradiancia.png', dpi=300)
 plt.close()

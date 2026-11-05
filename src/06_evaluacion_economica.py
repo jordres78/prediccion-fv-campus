@@ -162,6 +162,7 @@ sens = {
     'Costo evitado por kWh (−15 % / +15 %)': ('costo_evitado', [round(b['costo_evitado'] * 0.85, 2), round(b['costo_evitado'] * 1.15, 2)]),
     'Valor del crédito de energía (−15 % / +15 %)': ('valor_credito', [round(b['valor_credito'] * 0.85, 2), round(b['valor_credito'] * 1.15, 2)]),
     'O&M (0,5 % / 2 % de la inversión)': ('om_pct', [0.5, 2.0]),
+    'Degradación anual (0,25 % / 1 %)': ('degradacion', [0.25, 1.0]),
     'Escalamiento real de precios (−1 % / +2 %)': ('escalamiento', [-1, 2]),
 }
 filas = []
